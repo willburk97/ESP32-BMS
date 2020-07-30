@@ -46,8 +46,8 @@ AdafruitIO_Feed *battdischargetime4 = io.feed("battdischargetime1");
 
 void setup() {
   pinMode(LEDPin, OUTPUT);
-  for (cell=1;cell<5;cell++) {
-    pinMode(dischargePin[cell-1], OUTPUT);
+  for (cell=1;cell<5;cell++) { 
+    pinMode(dischargePin[cell-1], OUTPUT); // 0 references are annoying..you'll see -1 throughout.
   }
 
   for (i=0;i<50;i=i+1) { analogRead(analogIn[1-1]); }  // Prevent first couple of reads from being anomalous.
@@ -66,7 +66,7 @@ void setup() {
   Serial.println();
   Serial.println(io.statusText());
 
-//  inverter->onMessage(inverter);
+//  inverter->onMessage(inverter);   //saving these for when I add inverter control.
 //  inverter->get();
 }
 
@@ -113,7 +113,7 @@ void loop() {
     battdischarge4->save(dischargeState[4-1]);
     battdischargetime4->save(dischargeTime[4-1]);
 
-    for (cell=4;cell<5;cell++) {
+    for (cell=4;cell<5;cell++) {  // only discharge testing cell 4 presently.
       if (cellVolt[cell-1] <= lowBatt || cellVolt[cell-1] < 3.0) {
         digitalWrite(dischargePin[cell-1], false);
         dischargeState[cell-1] = false;
@@ -129,7 +129,7 @@ void loop() {
 
   }
 
-  for (cell=4;cell<5;cell++) {
+  for (cell=4;cell<5;cell++) {  // just cell 4 for now.
     if (dischargeState[cell-1]) { dischargeTime[cell-1]++; }
   
     if ((millis() > 30000) && (cellVolt[cell-1] > (lowBatt + allowedCellDiff)) && (cellVolt[cell-1] > 3.0)) {
