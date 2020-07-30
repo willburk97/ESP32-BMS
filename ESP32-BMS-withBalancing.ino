@@ -1,11 +1,12 @@
-// Adafruit IO Analog In Example
 // Tutorial Link: https://learn.adafruit.com/adafruit-io-basics-analog-input
 //
 // Adafruit invests time and resources providing this open source code.
 // Please support Adafruit and open source hardware by purchasing
 // products from Adafruit!
 //
-// Written by Todd Treece for Adafruit Industries
+// Some written by Todd Treece for Adafruit Industries
+// The rest written by William Burk for himself.
+// Sorry Todd, for the mess.
 // Copyright (c) 2016 Adafruit Industries
 // Licensed under the MIT license.
 //
